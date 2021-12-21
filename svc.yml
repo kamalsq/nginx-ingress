@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: nginx-official-service
+ namespace: ingress-nginx
+spec:
+ type: NodePort
+ ports:
+ - protocol: TCP
+   port: 80
+   nodePort: 31303
+ selector:
+   app: nginx-official

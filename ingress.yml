@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+      nginx.ingress.kubernetes.io/auth-type: basic
+      nginx.ingress.kubernetes.io/auth-secret: basic-auth
+      nginx.ingress.kubernetes.io/auth-realm: "squareops Authentication Required - squareops"
+  name: nginx-ingress
+  namespace: ingress-nginx
+spec:
+  rules:
+    - host: sheoran.squareops.co.in
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: nginx-official-service
+              servicePort: 80
